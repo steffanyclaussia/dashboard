@@ -75,7 +75,7 @@ def load_df(path="Data Threeasure_Cleaned.csv"):
 try:
     df = load_df()
 except FileNotFoundError:
-    st.error("File data tidak ditemukan. Pastikan file 'Data Threeasure Update.csv' ada.")
+    st.error("File data tidak ditemukan. Pastikan file 'Data Threeasure_Cleaned.csv' ada.")
     st.stop()
 
 # ---------------------------
@@ -1022,4 +1022,5 @@ elif page.startswith("Halaman 3"):
         Disusun oleh <b>Kelompok Threeasure</b> • UPN "Veteran" Jawa Timur (2025)
     </div>
     """, unsafe_allow_html=True)
+
 

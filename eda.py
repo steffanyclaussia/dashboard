@@ -4,6 +4,7 @@ import pandas as pd
 import plotly.express as px
 import numpy as np
 import re
+import os
 
 # ===== Konfigurasi Halaman =====
 st.set_page_config(
@@ -12,7 +13,15 @@ st.set_page_config(
 )
 
 # ===== Load Dataset =====
-df = pd.read_csv("Data Threeasure_Cleaned.csv")
+if os.path.exists("Data Threeasure_Cleaned.csv"):
+    df = pd.read_csv("Data Threeasure_Cleaned.csv")
+else:
+    st.warning("File `Data Threeasure_Cleaned.csv` tidak ditemukan. Silakan upload CSV.")
+    uploaded = st.file_uploader("Upload file CSV", type=["csv"])
+    if uploaded is not None:
+        df = pd.read_csv(uploaded)
+    else:
+        st.stop()
 
 # ===== Preprocessing =====
 # Bersihkan nama kolom
